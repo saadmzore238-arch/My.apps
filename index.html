@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPA Installer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26;
+      --border: rgba(120,100,255,0.15); --accent: #7B5EFF;
+      --accent2: #C084FC; --text: #f0eeff; --muted: #8884aa; --green: #4ade80;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(123,94,255,0.12) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(10,10,15,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-badge { font-size: 0.75rem; padding: 4px 12px; border-radius: 99px; background: rgba(123,94,255,0.15); border: 1px solid var(--border); color: var(--accent2); }
+    .hero { position: relative; z-index: 1; text-align: center; padding: 100px 24px 60px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 24px; padding: 6px 16px; border-radius: 99px; border: 1px solid rgba(192,132,252,0.25); background: rgba(192,132,252,0.07); }
+    .hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
+    .hero h1 .line2 { background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.05rem; color: var(--muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .upload-section { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px 80px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; box-shadow: 0 0 60px rgba(123,94,255,0.08); }
+    .drop-zone { border: 2px dashed rgba(123,94,255,0.35); border-radius: 14px; padding: 52px 24px; text-align: center; cursor: pointer; background: rgba(123,94,255,0.03); position: relative; }
+    .drop-icon { width: 64px; height: 64px; margin: 0 auto 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 8px 32px rgba(123,94,255,0.4); }
+    .drop-zone h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+    .drop-zone p { font-size: 0.85rem; color: var(--muted); }
+    .drop-zone input { position: absolute; inset:0; opacity:0; cursor:pointer; }
+    .file-info { display: none; align-items: center; gap: 14px; margin-top: 20px; padding: 16px; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2); border-radius: 12px; }
+    .file-info.show { display: flex; }
+    .fields { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    label { font-size: 0.82rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase; }
+    input[type=text], textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-family: inherit; font-size: 0.95rem; outline: none; }
+    input[type=text]:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(123,94,255,0.15); }
+    textarea { resize: vertical; min-height: 80px; }
+    .btn-generate { width: 100%; margin-top: 24px; padding: 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; border-radius: 12px; color: #fff; font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 24px rgba(123,94,255,0.45); }
+    .result-section { display: none; max-width: 640px; margin: 0 auto; padding: 0 24px 80px; }
+    .result-section.show { display: block; }
+    .result-card { background: var(--card); border: 1px solid rgba(74,222,128,0.2); border-radius: 20px; padding: 36px; }
+    .result-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .check-circle { width: 48px; height: 48px; background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .link-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .link-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+    .link-value { font-size: 0.88rem; color: var(--accent2); word-break: break-all; flex:1; }
+    .btn-copy { padding: 8px 16px; background: rgba(123,94,255,0.15); border: 1px solid var(--border); border-radius: 8px; color: var(--accent2); font-family: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    .btn-copy.copied { color: var(--green); border-color: rgba(74,222,128,0.3); }
+    .install-btn { display: block; width: 100%; margin-top: 20px; padding: 16px; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); border-radius: 12px; color: var(--green); font-family: inherit; font-size: 1rem; font-weight: 700; text-align: center; text-decoration: none; }
+    .how-section { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px 100px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 28px; }
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 18px; align-items: flex-start; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
+    .step-num { width: 36px; height: 36px; flex-shrink:0; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; }
+    .step h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .step p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    footer { text-align: center; padding: 28px 24px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .hero, .upload-section, .how-section { animation: fadeUp .7s ease both; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">⚡ IPADrop</div>
+  <div class="nav-badge">eSign Compatible</div>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow"><span></span> Install IPA on iPhone — No PC Needed</div>
+  <h1>Drop your IPA.<br><span class="line2">Install in seconds.</span></h1>
+  <p>Upload your IPA file, generate an install link, and tap to install directly on any iPhone using eSign.</p>
+</section>
+<section class="upload-section">
+  <div class="card">
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="ipaFile" accept=".ipa" />
+      <div class="drop-icon">📦</div>
+      <h3>Drop your IPA file here</h3>
+      <p>or click to browse — .ipa files only</p>
+    </div>
+    <div class="file-info" id="fileInfo">
+      <div style="font-size:1.6rem">📱</div>
+      <div>
+        <div style="font-size:0.9rem;font-weight:600" id="fileName">app.ipa</div>
+        <div style="font-size:0.78rem;color:var(--muted)" id="fileSize">0 MB</div>
+      </div>
+    </div>
+    <div class="fields">
+      <div><label>App Name</label><input type="text" id="appName" placeholder="My Awesome App" /></div>
+      <div><label>Version (optional)</label><input type="text" id="appVersion" placeholder="1.0.0" /></div>
+      <div><label>Raw IPA Download URL</label><input type="text" id="ipaUrl" placeholder="https://github.com/.../app.ipa" /></div>
+    </div>
+    <button class="btn-generate" onclick="generateLink()">✦ Generate Install Link</button>
+  </div>
+</section>
+<section class="result-section" id="resultSection">
+  <div class="result-card">
+    <div class="result-header">
+      <div class="check-circle">✓</div>
+      <div><h2 id="resultAppName">Your App</h2><p>Install link generated successfully</p></div>
+    </div>
+    <div class="link-box">
+      <div style="flex:1"><div class="link-label">eSign Install Link</div><div class="link-value" id="esignLink">—</div></div>
+      <button class="btn-copy" id="copyEsign" onclick="copyLink('esignLink','copyEsign')">Copy</button>
+    </div>
+    <div class="link-box">
+      <div style="flex:1"><div class="link-label">Direct Download</div><div class="link-value" id="directLink">—</div></div>
+      <button class="btn-copy" id="copyDirect" onclick="copyLink('directLink','copyDirect')">Copy</button>
+    </div>
+    <a id="installAnchor" href="#" class="install-btn" onclick="openInstall(event)">📲 Tap to Install with eSign</a>
+  </div>
+</section>
+<section class="how-section">
+  <div class="section-title">How it works</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div><h4>Paste IPA URL</h4><p>Host your IPA on GitHub Releases and paste the direct download link.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div><h4>Generate link</h4><p>We build a custom esign:// deep link automatically.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div><h4>Tap & Install</h4><p>Share the link. Tap it and eSign installs the app instantly.</p></div></div>
+  </div>
+</section>
+<footer>Built for eSign users · No data stored · Everything runs in your browser</footer>
+<script>
+  const dropZone = document.getElementById('dropZone');
+  const ipaFileInput = document.getElementById('ipaFile');
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); });
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file && file.name.endsWith('.ipa')) handleFile(file);
+  });
+  ipaFileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+  function handleFile(file) {
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('fileSize').textContent = (file.size/1024/1024).toFixed(2)+' MB';
+    document.getElementById('fileInfo').classList.add('show');
+    if (!document.getElementById('appName').value) document.getElementById('appName').value = file.name.replace('.ipa','').replace(/[-_]/g,' ');
+  }
+  function generateLink() {
+    const ipaUrl = document.getElementById('ipaUrl').value.trim();
+    const appName = document.getElementById('appName').value.trim() || 'My App';
+    const version = document.getElementById('appVersion').value.trim() || '1.0';
+    if (!ipaUrl) { document.getElementById('ipaUrl').style.borderColor='#f87171'; setTimeout(()=>document.getElementById('ipaUrl').style.borderColor='',2000); return; }
+    const esignUrl = `esign://install?url=${encodeURIComponent(ipaUrl)}&name=${encodeURIComponent(appName)}&version=${encodeURIComponent(version)}`;
+    document.getElementById('esignLink').textContent = esignUrl;
+    document.getElementById('directLink').textContent = ipaUrl;
+    document.getElementById('resultAppName').textContent = appName;
+    document.getElementById('installAnchor').href = esignUrl;
+    document.getElementById('resultSection').classList.add('show');
+    document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
+  }
+  function copyLink(valueId, btnId) {
+    navigator.clipboard.writeText(document.getElementById(valueId).textContent).then(() => {
+      const btn = document.getElementById(btnId);
+      btn.textContent = 'Copied!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+  function openInstall(e) { e.preventDefault(); window.location.href = document.getElementById('installAnchor').href; }
+</script>
+</body>
+</html>
