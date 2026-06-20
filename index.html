@@ -18,6 +18,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero p{font-size:1rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.8}
 .apps-section{max-width:720px;margin:0 auto;padding:40px 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
+.search-wrapper{max-width:720px;margin:0 auto;padding:0 20px 24px}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 18px;transition:border-color .2s}
+.search-box:focus-within{border-color:rgba(108,99,255,0.5)}
+.search-icon{font-size:1rem;color:var(--muted);flex-shrink:0}
+.search-input{background:none;border:none;outline:none;color:var(--text);font-size:0.95rem;font-family:'Inter',sans-serif;width:100%;direction:rtl}
+.search-input::placeholder{color:var(--muted)}
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
@@ -25,6 +31,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .app-name{font-size:0.98rem;font-weight:700;margin-bottom:3px}
 .app-meta{font-size:0.75rem;color:var(--muted)}
 .dl-btn{padding:7px 14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.78rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0}
+.no-results{text-align:center;color:var(--muted);padding:40px 0;font-size:0.9rem;display:none}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#000;font-weight:700;font-size:0.85rem;padding:12px 24px;border-radius:99px;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
@@ -39,9 +46,16 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 <h1>فرۆشگای<br><em>یاکوزا.</em></h1>
 <p>هەر ئەپێک کلیک بکە بۆ داونلۆد کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
 </section>
+<div class="search-wrapper">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="گەڕان بۆ ئەپەکان..." />
+  </div>
+</div>
 <section class="apps-section">
 <div class="section-label">ئەپەکان</div>
 <div class="apps-grid" id="appsGrid"></div>
+<div class="no-results" id="noResults">❌ هیچ ئەپێک نەدۆزرایەوە</div>
 </section>
 <div class="toast" id="toast">✓ داونلۆد دەستپێکرد!</div>
 <footer>Yakuza Store 🎮 · ئەپی مۆدکراو</footer>
@@ -52,14 +66,28 @@ const apps=[
 {name:"یاکوزا ڤیدیۆ ستار",img:"https://i.imgur.com/DTadDNl.png",version:"1.0",size:"400 MB",url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
 ];
 const grid=document.getElementById('appsGrid');
-apps.forEach(app=>{
-const card=document.createElement('a');
-card.className='app-card';
-card.href=app.url;
-card.innerHTML=`<img class="app-img" src="${app.img}" /><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
-card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
-grid.appendChild(card);
+const noResults=document.getElementById('noResults');
+const searchInput=document.getElementById('searchInput');
+function renderApps(list){
+  grid.innerHTML='';
+  if(list.length===0){noResults.style.display='block';return;}
+  noResults.style.display='none';
+  list.forEach(app=>{
+    const card=document.createElement('a');
+    card.className='app-card';
+    card.href=app.url;
+    card.innerHTML=`<img class="app-img" src="${app.img}" /><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
+    card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
+    grid.appendChild(card);
+  });
+}
+searchInput.addEventListener('input',()=>{
+  const q=searchInput.value.trim().toLowerCase();
+  if(!q){renderApps(apps);return;}
+  const filtered=apps.filter(a=>a.name.toLowerCase().includes(q));
+  renderApps(filtered);
 });
+renderApps(apps);
 </script>
 </body>
 </html>
