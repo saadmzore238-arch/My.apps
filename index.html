@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ku">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,51 +8,55 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#070711;--card:#0f0f1e;--border:rgba(255,255,255,0.07);--accent:#6C63FF;--accent2:#A78BFA;--text:#f0eeff;--muted:#7c7a9a;--green:#22d3a5}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;direction:rtl}
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(7,7,17,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .logo{font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-tag{font-size:0.7rem;padding:3px 10px;border-radius:99px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.25);color:var(--accent2)}
 .hero{text-align:center;padding:80px 20px 48px}
-.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:14px}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.2;margin-bottom:14px}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.7}
+.hero p{font-size:1rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.8}
 .apps-section{max-width:720px;margin:0 auto;padding:40px 20px 80px}
-.section-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:16px}
+.section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s}
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
-.app-icon{width:58px;height:58px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(167,139,250,0.2))}
+.app-img{width:58px;height:58px;border-radius:14px;flex-shrink:0;object-fit:cover}
 .app-name{font-size:0.98rem;font-weight:700;margin-bottom:3px}
 .app-meta{font-size:0.75rem;color:var(--muted)}
-.dl-btn{padding:7px 14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.78rem;font-weight:700;color:#fff;white-space:nowrap}
+.dl-btn{padding:7px 14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.78rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#000;font-weight:700;font-size:0.85rem;padding:12px 24px;border-radius:99px;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <nav>
 <div class="logo">Yakuza Store 🎮</div>
-<div class="nav-tag">Modded Apps</div>
+<div class="nav-tag">ئەپی مۆدکراو</div>
 </nav>
 <section class="hero">
-<h1>Yakuza's<br><em>App Store.</em></h1>
-<p>Tap any app to download directly to your device.</p>
+<h1>فرۆشگای<br><em>یاکوزا.</em></h1>
+<p>هەر ئەپێک کلیک بکە بۆ داونلۆد کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
 </section>
 <section class="apps-section">
-<div class="section-label">Available Apps</div>
+<div class="section-label">ئەپەکان</div>
 <div class="apps-grid" id="appsGrid"></div>
 </section>
-<footer>Yakuza Store 🎮 · Modded Apps</footer>
+<div class="toast" id="toast">✓ داونلۆد دەستپێکرد!</div>
+<footer>Yakuza Store 🎮 · ئەپی مۆدکراو</footer>
 <script>
 const apps=[
-{name:"Yakuza Netflix",icon:"🎬",version:"1.0",size:"38.45 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
-{name:"Yakuza 8",icon:"🎮",version:"1.0",size:"99.8 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"}
+{name:"یاکوزا نێتفلیکس",img:"https://i.imgur.com/gs9n0li_d.webp",version:"1.0",size:"38.45 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
+{name:"یاکوزا 8 بۆل پوول",img:"https://i.imgur.com/wSSdXup_d.webp",version:"1.0",size:"99.8 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"}
 ];
 const grid=document.getElementById('appsGrid');
 apps.forEach(app=>{
 const card=document.createElement('a');
 card.className='app-card';
 card.href=app.url;
-card.innerHTML=`<div class="app-icon">${app.icon}</div><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ Download</div>`;
+card.innerHTML=`<img class="app-img" src="${app.img}" /><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
+card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
 grid.appendChild(card);
 });
 </script>
