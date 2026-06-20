@@ -61,13 +61,25 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 <footer>Yakuza Store 🎮 · ئەپی مۆدکراو</footer>
 <script>
 const apps=[
-{name:"یاکوزا نێتفلیکس",img:"https://i.imgur.com/gs9n0li_d.webp",version:"1.0",size:"38.45 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
-{name:"یاکوزا 8 بۆل پوول",img:"https://i.imgur.com/wSSdXup_d.webp",version:"1.0",size:"99.8 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"},
-{name:"یاکوزا ڤیدیۆ ستار",img:"https://i.imgur.com/DTadDNl.png",version:"1.0",size:"400 MB",url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
+{name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],img:"https://i.imgur.com/gs9n0li_d.webp",version:"1.0",size:"38.45 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
+{name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],img:"https://i.imgur.com/wSSdXup_d.webp",version:"1.0",size:"99.8 MB",url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"},
+{name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],img:"https://i.imgur.com/DTadDNl.png",version:"1.0",size:"400 MB",url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
 ];
 const grid=document.getElementById('appsGrid');
 const noResults=document.getElementById('noResults');
 const searchInput=document.getElementById('searchInput');
+function normalize(str){
+  return str.toLowerCase()
+    .replace(/ی/g,'ي').replace(/ک/g,'ك').replace(/ڤ/g,'ف')
+    .replace(/ۆ/g,'و').replace(/ێ/g,'ي').replace(/ە/g,'ه')
+    .replace(/\s+/g,' ').trim();
+}
+function matchesSearch(app,q){
+  const nq=normalize(q);
+  if(normalize(app.name).includes(nq))return true;
+  if(app.keywords.some(k=>normalize(k).includes(nq)||nq.includes(normalize(k))))return true;
+  return false;
+}
 function renderApps(list){
   grid.innerHTML='';
   if(list.length===0){noResults.style.display='block';return;}
@@ -76,16 +88,15 @@ function renderApps(list){
     const card=document.createElement('a');
     card.className='app-card';
     card.href=app.url;
-    card.innerHTML=`<img class="app-img" src="${app.img}" /><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
+    card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
     card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
     grid.appendChild(card);
   });
 }
 searchInput.addEventListener('input',()=>{
-  const q=searchInput.value.trim().toLowerCase();
+  const q=searchInput.value.trim();
   if(!q){renderApps(apps);return;}
-  const filtered=apps.filter(a=>a.name.toLowerCase().includes(q));
-  renderApps(filtered);
+  renderApps(apps.filter(a=>matchesSearch(a,q)));
 });
 renderApps(apps);
 </script>
