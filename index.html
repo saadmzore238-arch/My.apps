@@ -14,14 +14,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links{display:flex;gap:12px;align-items:center}
 .nav-social{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.75rem;font-weight:600;transition:all .2s}
 .nav-social:hover{border-color:rgba(108,99,255,0.5);background:rgba(108,99,255,0.1)}
-.nav-tag{font-size:0.7rem;padding:3px 10px;border-radius:99px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.25);color:var(--accent2)}
 .hero{text-align:center;padding:80px 20px 48px}
 .hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.2;margin-bottom:14px}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{font-size:1rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.8}
 .hero-socials{display:flex;gap:12px;justify-content:center;margin-top:24px}
 .hero-social-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:700;transition:all .2s}
-.hero-social-btn:hover{transform:translateY(-2px);border-color:rgba(108,99,255,0.5)}
 .hero-social-btn.tg{border-color:rgba(41,182,246,0.3);color:#29b6f6}
 .hero-social-btn.yt{border-color:rgba(255,70,70,0.3);color:#ff4646}
 .stats{display:flex;justify-content:center;gap:32px;padding:0 20px 40px}
@@ -40,7 +38,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .apps-section{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl}
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;color:inherit;transition:all .2s;direction:rtl}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
 .app-img{width:58px;height:58px;border-radius:14px;flex-shrink:0;object-fit:cover}
 .app-name{font-size:0.98rem;font-weight:700;margin-bottom:3px}
@@ -55,7 +53,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
 .footer-socials{display:flex;gap:12px;justify-content:center;margin-bottom:16px}
 .footer-social{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;border:1px solid var(--border);text-decoration:none;font-size:0.8rem;font-weight:700;transition:all .2s}
-.footer-social:hover{transform:translateY(-2px)}
 .footer-social.tg{color:#29b6f6;border-color:rgba(41,182,246,0.3)}
 .footer-social.yt{color:#ff4646;border-color:rgba(255,70,70,0.3)}
 </style>
@@ -68,40 +65,33 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   <a class="nav-social yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ یوتیوب</a>
 </div>
 </nav>
-
 <section class="hero">
 <h1>فرۆشگای<br><em>یاکوزا.</em></h1>
-<p>هەر ئەپێک کلیک بکە بۆ داونلۆد کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
+<p>هەر ئەپێک کلیک بکە بۆ ئینستاڵ کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
 <div class="hero-socials">
   <a class="hero-social-btn tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ کەناڵی تەلەگرام</a>
   <a class="hero-social-btn yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ کەناڵی یوتیوب</a>
 </div>
 </section>
-
 <div class="stats">
 <div class="stat"><div class="stat-num" id="totalApps">0</div><div class="stat-label">کۆی ئەپەکان</div></div>
 <div class="stat"><div class="stat-num" id="totalSize">0</div><div class="stat-label">MB کۆی قەبارە</div></div>
 <div class="stat"><div class="stat-num" id="totalCats">0</div><div class="stat-label">کاتیگۆری</div></div>
 </div>
-
 <div class="search-wrapper">
   <div class="search-box">
     <span class="search-icon">🔍</span>
     <input class="search-input" id="searchInput" type="text" placeholder="گەڕان بۆ ئەپەکان..." />
   </div>
 </div>
-
 <div class="cats" id="catsBar"></div>
-
 <section class="apps-section">
 <div class="section-label" id="sectionLabel">ئەپەکان</div>
 <div class="apps-grid" id="appsGrid"></div>
 <div class="no-results" id="noResults">❌ هیچ ئەپێک نەدۆزرایەوە</div>
 </section>
-
 <button class="scroll-top" id="scrollTop">↑</button>
-<div class="toast" id="toast">✓ داونلۆد دەستپێکرد!</div>
-
+<div class="toast" id="toast">✓ ئینستاڵ دەستپێکرد!</div>
 <footer>
   <div class="footer-socials">
     <a class="footer-social tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ تەلەگرام</a>
@@ -109,12 +99,12 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   </div>
   Yakuza Store 🎮 · ئەپی مۆدکراو
 </footer>
-
 <script>
+const BASE='https://saadmzore238-arch.github.io/My.apps';
 const apps=[
-  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
-  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"},
-  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
+  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,plist:`${BASE}/manifests/netflix.plist`},
+  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,plist:`${BASE}/manifests/pool.plist`},
+  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,plist:`${BASE}/manifests/videostar.plist`}
 ];
 const cats=[...new Set(apps.map(a=>a.cat))];
 let activeCat='هەموو';
@@ -142,11 +132,13 @@ function renderApps(list){
   if(list.length===0){noResults.style.display='block';return;}
   noResults.style.display='none';
   list.forEach(app=>{
-    const card=document.createElement('a');
+    const card=document.createElement('div');
     card.className='app-card';
-    card.href=app.url;
-    card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size} MB</div><div class="app-cat-tag">${app.cat}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
-    card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
+    card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size} MB</div><div class="app-cat-tag">${app.cat}</div></div><div class="dl-btn">↓ ئینستاڵ</div>`;
+    card.addEventListener('click',()=>{
+      window.location.href=`itms-services://?action=download-manifest&url=${encodeURIComponent(app.plist)}`;
+      const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
+    });
     grid.appendChild(card);
   });
 }
