@@ -38,7 +38,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .apps-section{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;color:inherit;transition:all .2s;direction:rtl}
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
 .app-img{width:58px;height:58px;border-radius:14px;flex-shrink:0;object-fit:cover}
 .app-name{font-size:0.98rem;font-weight:700;margin-bottom:3px}
@@ -67,7 +67,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 </nav>
 <section class="hero">
 <h1>فرۆشگای<br><em>یاکوزا.</em></h1>
-<p>هەر ئەپێک کلیک بکە بۆ ئینستاڵ کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
+<p>هەر ئەپێک کلیک بکە بۆ داونلۆد کردنی ڕاستەوخۆ بۆ مۆبایلەکەت.</p>
 <div class="hero-socials">
   <a class="hero-social-btn tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ کەناڵی تەلەگرام</a>
   <a class="hero-social-btn yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ کەناڵی یوتیوب</a>
@@ -91,7 +91,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 <div class="no-results" id="noResults">❌ هیچ ئەپێک نەدۆزرایەوە</div>
 </section>
 <button class="scroll-top" id="scrollTop">↑</button>
-<div class="toast" id="toast">✓ ئینستاڵ دەستپێکرد!</div>
+<div class="toast" id="toast">✓ داونلۆد دەستپێکرد!</div>
 <footer>
   <div class="footer-socials">
     <a class="footer-social tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ تەلەگرام</a>
@@ -100,11 +100,10 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   Yakuza Store 🎮 · ئەپی مۆدکراو
 </footer>
 <script>
-const BASE='https://saadmzore238-arch.github.io/My.apps';
 const apps=[
-  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,plist:`${BASE}/manifests/netflix.plist`},
-  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,plist:`${BASE}/manifests/pool.plist`},
-  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,plist:`${BASE}/manifests/videostar.plist`}
+  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
+  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"},
+  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
 ];
 const cats=[...new Set(apps.map(a=>a.cat))];
 let activeCat='هەموو';
@@ -132,13 +131,11 @@ function renderApps(list){
   if(list.length===0){noResults.style.display='block';return;}
   noResults.style.display='none';
   list.forEach(app=>{
-    const card=document.createElement('div');
+    const card=document.createElement('a');
     card.className='app-card';
-    card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size} MB</div><div class="app-cat-tag">${app.cat}</div></div><div class="dl-btn">↓ ئینستاڵ</div>`;
-    card.addEventListener('click',()=>{
-      window.location.href=`itms-services://?action=download-manifest&url=${encodeURIComponent(app.plist)}`;
-      const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
-    });
+    card.href=app.url;
+    card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size} MB</div><div class="app-cat-tag">${app.cat}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
+    card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
     grid.appendChild(card);
   });
 }
