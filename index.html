@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ku" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,26 +10,37 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#070711;--card:#0f0f1e;--border:rgba(255,255,255,0.07);--accent:#6C63FF;--accent2:#A78BFA;--text:#f0eeff;--muted:#7c7a9a;--green:#22d3a5}
-body{background:linear-gradient(135deg,#0a0015 0%,#0d0030 25%,#070711 50%,#0a0020 75%,#050010 100%);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;direction:rtl}
+[data-theme="light"]{--bg:#f0f0ff;--card:#ffffff;--border:rgba(0,0,0,0.08);--text:#1a1a2e;--muted:#666688}
+body{background:linear-gradient(135deg,#0a0015 0%,#0d0030 25%,#070711 50%,#0a0020 75%,#050010 100%);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;direction:rtl;transition:background .3s}
+[data-theme="light"] body{background:linear-gradient(135deg,#e8e0ff 0%,#f0f0ff 50%,#e8e0ff 100%)}
 
-/* Welcome Toast */
 .welcome{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-120px);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:700;font-size:0.9rem;padding:14px 28px;border-radius:99px;z-index:999;pointer-events:none;transition:transform .5s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;box-shadow:0 4px 24px rgba(108,99,255,0.4)}
 .welcome.show{transform:translateX(-50%) translateY(0)}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(7,7,17,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+[data-theme="light"] nav{background:rgba(240,240,255,0.9)}
 .logo{font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:12px;align-items:center}
+.nav-links{display:flex;gap:8px;align-items:center}
 .nav-social{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.75rem;font-weight:600;transition:all .2s}
 .nav-social:hover{border-color:rgba(108,99,255,0.5);background:rgba(108,99,255,0.1)}
+.theme-btn{width:36px;height:36px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
-/* Featured App */
 .featured{max-width:720px;margin:0 auto;padding:0 20px 24px}
-.featured-card{background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(167,139,250,0.1));border:1px solid rgba(108,99,255,0.3);border-radius:20px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;direction:rtl;position:relative;overflow:hidden}
+.featured-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
+.featured-card{background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(167,139,250,0.1));border:1px solid rgba(108,99,255,0.3);border-radius:20px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;direction:rtl;position:relative;overflow:hidden;cursor:pointer}
 .featured-badge{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-size:0.65rem;font-weight:900;padding:3px 10px;border-radius:99px}
 .featured-img{width:72px;height:72px;border-radius:18px;flex-shrink:0;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.4)}
 .featured-name{font-size:1.1rem;font-weight:900;margin-bottom:4px}
 .featured-meta{font-size:0.75rem;color:var(--muted)}
 .featured-dl{padding:8px 18px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.82rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0}
+
+/* Updates Section */
+.updates-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
+.updates-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
+.update-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;direction:rtl}
+.update-dot{width:8px;height:8px;border-radius:99px;background:var(--accent2);flex-shrink:0}
+.update-text{font-size:0.8rem;color:var(--text)}
+.update-date{font-size:0.7rem;color:var(--muted);margin-right:auto}
 
 .hero{text-align:center;padding:80px 20px 48px}
 .hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.2;margin-bottom:14px}
@@ -56,7 +67,28 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .apps-section{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl;position:relative}
+
+/* App Detail Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border-radius:24px 24px 0 0;padding:28px 24px 40px;width:100%;max-width:500px;direction:rtl}
+.modal-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.modal-img{width:80px;height:80px;border-radius:20px;object-fit:cover}
+.modal-name{font-size:1.3rem;font-weight:900}
+.modal-meta{font-size:0.8rem;color:var(--muted);margin-top:4px}
+.modal-close{margin-right:auto;width:32px;height:32px;border-radius:99px;background:var(--border);border:none;color:var(--text);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-dl-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:14px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}
+
+/* Comments */
+.comments-section{margin-top:16px}
+.comments-label{font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:10px}
+.comment-input-row{display:flex;gap:8px;margin-bottom:12px}
+.comment-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text);font-size:0.85rem;font-family:'Inter',sans-serif;outline:none;direction:rtl}
+.comment-send{padding:10px 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;font-weight:700;cursor:pointer;font-size:0.85rem}
+.comment-item{background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:0.82rem;direction:rtl}
+.comment-time{font-size:0.7rem;color:var(--muted);margin-top:4px}
+
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;color:inherit;transition:all .2s;direction:rtl;position:relative;cursor:pointer}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
 .app-img{width:58px;height:58px;border-radius:14px;flex-shrink:0;object-fit:cover}
 .app-name{font-size:0.98rem;font-weight:700;margin-bottom:3px}
@@ -80,9 +112,33 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 
 <div class="welcome" id="welcome">🎮 بەخێربێیت بۆ یاکوزا ستۆر!</div>
 
+<!-- App Detail Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <img class="modal-img" id="modalImg" src=""/>
+      <div>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <button class="modal-dl-btn" id="modalDlBtn">↓ داونلۆد</button>
+    <div class="comments-section">
+      <div class="comments-label">💬 کۆمێنتەکان</div>
+      <div class="comment-input-row">
+        <input class="comment-input" id="commentInput" placeholder="ڕایەکەت بنووسە..."/>
+        <button class="comment-send" id="commentSend">ناردن</button>
+      </div>
+      <div id="commentsList"></div>
+    </div>
+  </div>
+</div>
+
 <nav>
 <div class="logo">Yakuza Store 🎮</div>
 <div class="nav-links">
+  <button class="theme-btn" id="themeBtn">🌙</button>
   <a class="nav-social tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ تەلەگرام</a>
   <a class="nav-social yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ یوتیوب</a>
 </div>
@@ -103,8 +159,16 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 <div class="stat"><div class="stat-num" id="totalCats">0</div><div class="stat-label">کاتیگۆری</div></div>
 </div>
 
-<!-- Featured App of the Week -->
+<!-- Featured -->
 <div class="featured" id="featuredSection"></div>
+
+<!-- Updates -->
+<div class="updates-section">
+  <div class="updates-label">🔔 تازەکاریەکان</div>
+  <div class="update-item"><div class="update-dot"></div><div class="update-text">یاکوزا 8 بۆل پوول ئەپدەیت کرا</div><div class="update-date">ئەمڕۆ</div></div>
+  <div class="update-item"><div class="update-dot"></div><div class="update-text">Roblox نوێ زیاد کرا</div><div class="update-date">دوێنێ</div></div>
+  <div class="update-item"><div class="update-dot"></div><div class="update-text">Subway Surfers زیاد کرا</div><div class="update-date">٣ ڕۆژ</div></div>
+</div>
 
 <div class="search-wrapper">
   <div class="search-box">
@@ -144,10 +208,17 @@ const apps=[
   {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی","سەرفەرز"],cat:"یاری",img:"https://i.imgur.com/CuCI9Mw.jpeg",version:"1.0",size:180,url:"https://drive.google.com/uc?export=download&id=1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI",downloads:3200}
 ];
 
-// Featured app (most downloads)
+// Theme toggle
+const themeBtn=document.getElementById('themeBtn');
+themeBtn.onclick=()=>{
+  const html=document.documentElement;
+  if(html.getAttribute('data-theme')==='dark'){html.setAttribute('data-theme','light');themeBtn.textContent='☀️';}
+  else{html.setAttribute('data-theme','dark');themeBtn.textContent='🌙';}
+};
+
+// Featured
 const featured=apps.reduce((a,b)=>a.downloads>b.downloads?a:b);
-const featuredSection=document.getElementById('featuredSection');
-featuredSection.innerHTML=`<div style="font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px">⭐ ئەپی هەفتە</div><a class="featured-card" href="${featured.url}"><div class="featured-badge">🏆 ئەپی هەفتە</div><img class="featured-img" src="${featured.img}"/><div style="flex:1"><div class="featured-name">${featured.name}</div><div class="featured-meta">v${featured.version} · ${featured.size} MB</div><div class="dl-count">⬇️ ${featured.downloads.toLocaleString()} داونلۆد</div></div><div class="featured-dl">↓ داونلۆد</div></a>`;
+document.getElementById('featuredSection').innerHTML=`<div class="featured-label">⭐ ئەپی هەفتە</div><div class="featured-card" onclick="openModal(apps.find(a=>a.name===\`${featured.name}\`))"><div class="featured-badge">🏆 ئەپی هەفتە</div><img class="featured-img" src="${featured.img}"/><div style="flex:1"><div class="featured-name">${featured.name}</div><div class="featured-meta">v${featured.version} · ${featured.size} MB</div><div class="dl-count">⬇️ ${featured.downloads.toLocaleString()} داونلۆد</div></div><div class="featured-dl">↓ داونلۆد</div></div>`;
 
 const cats=[...new Set(apps.map(a=>a.cat))];
 let activeCat='هەموو';
@@ -156,12 +227,7 @@ document.getElementById('totalApps').textContent=apps.length;
 document.getElementById('totalSize').textContent=Math.round(apps.reduce((s,a)=>s+a.size,0));
 document.getElementById('totalCats').textContent=cats.length;
 
-// Welcome message
-setTimeout(()=>{
-  const w=document.getElementById('welcome');
-  w.classList.add('show');
-  setTimeout(()=>w.classList.remove('show'),3500);
-},500);
+setTimeout(()=>{const w=document.getElementById('welcome');w.classList.add('show');setTimeout(()=>w.classList.remove('show'),3500);},500);
 
 const catsBar=document.getElementById('catsBar');
 ['هەموو',...cats].forEach(c=>{
@@ -171,26 +237,63 @@ const catsBar=document.getElementById('catsBar');
   btn.onclick=()=>{activeCat=c;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderApps(filter());};
   catsBar.appendChild(btn);
 });
+
 function normalize(str){return str.toLowerCase().replace(/ی/g,'ي').replace(/ک/g,'ك').replace(/ڤ/g,'ف').replace(/ۆ/g,'و').replace(/ێ/g,'ي').replace(/ە/g,'ه').replace(/\s+/g,' ').trim();}
 function matchesSearch(app,q){const nq=normalize(q);if(normalize(app.name).includes(nq))return true;if(app.keywords.some(k=>normalize(k).includes(nq)||nq.includes(normalize(k))))return true;return false;}
 function filter(){return apps.filter(a=>{const catOk=activeCat==='هەموو'||a.cat===activeCat;const searchOk=!activeSearch||matchesSearch(a,activeSearch);return catOk&&searchOk;});}
+
+// Modal
+let currentApp=null;
+let comments={};
+
+function openModal(app){
+  currentApp=app;
+  document.getElementById('modalImg').src=app.img;
+  document.getElementById('modalName').textContent=app.name;
+  document.getElementById('modalMeta').textContent=`v${app.version} · ${app.size} MB · ${app.cat}`;
+  document.getElementById('modalDlBtn').onclick=()=>{window.location.href=app.url;const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);};
+  renderComments(app.name);
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+document.getElementById('modalClose').onclick=()=>document.getElementById('modalOverlay').classList.remove('show');
+document.getElementById('modalOverlay').onclick=e=>{if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show');};
+
+function renderComments(appName){
+  const list=document.getElementById('commentsList');
+  const appComments=comments[appName]||[];
+  list.innerHTML=appComments.length?appComments.map(c=>`<div class="comment-item">${c.text}<div class="comment-time">${c.time}</div></div>`).join(''):'<div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:10px">هێشتا کۆمێنتێک نییە</div>';
+}
+
+document.getElementById('commentSend').onclick=()=>{
+  const input=document.getElementById('commentInput');
+  const text=input.value.trim();
+  if(!text||!currentApp)return;
+  if(!comments[currentApp.name])comments[currentApp.name]=[];
+  const now=new Date();
+  comments[currentApp.name].unshift({text,time:`${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`});
+  input.value='';
+  renderComments(currentApp.name);
+};
+
 const grid=document.getElementById('appsGrid');
 const noResults=document.getElementById('noResults');
 const sectionLabel=document.getElementById('sectionLabel');
+
 function renderApps(list){
   grid.innerHTML='';
   sectionLabel.textContent=`ئەپەکان (${list.length})`;
   if(list.length===0){noResults.style.display='block';return;}
   noResults.style.display='none';
   list.forEach(app=>{
-    const card=document.createElement('a');
+    const card=document.createElement('div');
     card.className='app-card';
-    card.href=app.url;
     card.innerHTML=`<img class="app-img" src="${app.img}"/><div style="flex:1"><div class="app-name">${app.name}</div><div class="app-meta">v${app.version} · ${app.size} MB</div><div class="app-cat-tag">${app.cat}</div><div class="dl-count">⬇️ ${app.downloads.toLocaleString()}</div></div><div class="dl-btn">↓ داونلۆد</div>`;
-    card.addEventListener('click',()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)});
+    card.addEventListener('click',()=>openModal(app));
     grid.appendChild(card);
   });
 }
+
 document.getElementById('searchInput').addEventListener('input',e=>{activeSearch=e.target.value.trim();renderApps(filter());});
 const scrollBtn=document.getElementById('scrollTop');
 window.addEventListener('scroll',()=>{scrollBtn.classList.toggle('show',window.scrollY>300);});
