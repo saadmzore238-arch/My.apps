@@ -37,7 +37,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .cat-btn.active,.cat-btn:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
 .apps-section{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
-.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .app-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:all .2s;direction:rtl}
 .app-card:hover{border-color:rgba(108,99,255,0.4);transform:translateY(-2px)}
 .app-img{width:58px;height:58px;border-radius:14px;flex-shrink:0;object-fit:cover}
@@ -103,7 +103,12 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 const apps=[
   {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس","netfliks","فلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa"},
   {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","8 ball","بۆل","پوول","pool","بیلیارد"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/YAKUZA8Bp.ipa"},
-  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"}
+  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","ستار","star","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"},
+  {name:"PicsArt",keywords:["picsart","پیکسارت","ویرایش","عکس"],cat:"دیزاین",img:"https://i.imgur.com/V7Owt6c.png",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1oFRYJ5KaFG4JO_nMIG1P7vZ9dMcTiRZa"},
+  {name:"Candy Crush",keywords:["candy","crush","کەندی","کراش"],cat:"یاری",img:"https://i.imgur.com/DcYKeLN.png",version:"1.0",size:120,url:"https://drive.google.com/uc?export=download&id=1Rt4efDEmLhYQVng7jQdI_YGJTpOTiA8p"},
+  {name:"Block Blast",keywords:["block","blast","بلۆک","بلاست"],cat:"یاری",img:"https://i.imgur.com/lYfZbkL.png",version:"1.0",size:100,url:"https://drive.google.com/uc?export=download&id=1Du972Tg8TrMlYvh3XgWRV_Ea_wzvloD8"},
+  {name:"Roblox",keywords:["roblox","رۆبلۆکس"],cat:"یاری",img:"https://i.imgur.com/PXbkmMV.jpeg",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1g6AHWTVj6q1ZwoRQVlG6vsfACNMsPA5I"},
+  {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی","سەرفەرز"],cat:"یاری",img:"https://i.imgur.com/CuCI9Mw.jpeg",version:"1.0",size:180,url:"https://drive.google.com/uc?export=download&id=1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI"}
 ];
 const cats=[...new Set(apps.map(a=>a.cat))];
 let activeCat='هەموو';
