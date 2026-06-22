@@ -265,7 +265,10 @@ function renderComments(appName){
   list.innerHTML=appComments.length?appComments.map(c=>`<div class="comment-item">${c.text}<div class="comment-time">${c.time}</div></div>`).join(''):'<div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:10px">هێشتا کۆمێنتێک نییە</div>';
 }
 
-document.getElementById('commentSend').onclick=()=>{
+const BOT_TOKEN='8347380580:AAFFRtUJEIDoxFLfRcBWkcELf6rQPoKrB3k';
+const CHAT_ID='1131209914';
+
+document.getElementById('commentSend').onclick=async()=>{
   const input=document.getElementById('commentInput');
   const text=input.value.trim();
   if(!text||!currentApp)return;
@@ -274,6 +277,15 @@ document.getElementById('commentSend').onclick=()=>{
   comments[currentApp.name].unshift({text,time:`${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`});
   input.value='';
   renderComments(currentApp.name);
+  // Send to Telegram
+  const msg=`💬 کۆمێنتی نوێ لە یاکوزا ستۆر!\n\n🎮 ئەپ: ${currentApp.name}\n✍️ کۆمێنت: ${text}`;
+  try{
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:CHAT_ID,text:msg})
+    });
+  }catch(e){}
 };
 
 const grid=document.getElementById('appsGrid');
