@@ -34,7 +34,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .featured-meta{font-size:0.75rem;color:var(--muted)}
 .featured-dl{padding:8px 18px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.82rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0}
 
-/* Updates Section */
 .updates-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .updates-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .update-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;direction:rtl}
@@ -68,7 +67,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 
-/* App Detail Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
 .modal-overlay.show{display:flex}
 .modal{background:var(--card);border-radius:24px 24px 0 0;padding:28px 24px 40px;width:100%;max-width:500px;direction:rtl}
@@ -79,7 +77,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .modal-close{margin-right:auto;width:32px;height:32px;border-radius:99px;background:var(--border);border:none;color:var(--text);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .modal-dl-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:14px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}
 
-/* Comments */
 .comments-section{margin-top:16px}
 .comments-label{font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .comment-input-row{display:flex;gap:8px;margin-bottom:12px}
@@ -112,7 +109,6 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 
 <div class="welcome" id="welcome">🎮 بەخێربێیت بۆ یاکوزا ستۆر!</div>
 
-<!-- App Detail Modal -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-header">
@@ -159,10 +155,8 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 <div class="stat"><div class="stat-num" id="totalCats">0</div><div class="stat-label">کاتیگۆری</div></div>
 </div>
 
-<!-- Featured -->
 <div class="featured" id="featuredSection"></div>
 
-<!-- Updates -->
 <div class="updates-section">
   <div class="updates-label">🔔 تازەکاریەکان</div>
   <div class="update-item"><div class="update-dot"></div><div class="update-text">یاکوزا 8 بۆل پوول ئەپدەیت کرا</div><div class="update-date">ئەمڕۆ</div></div>
@@ -251,7 +245,12 @@ function openModal(app){
   document.getElementById('modalImg').src=app.img;
   document.getElementById('modalName').textContent=app.name;
   document.getElementById('modalMeta').textContent=`v${app.version} · ${app.size} MB · ${app.cat}`;
-  document.getElementById('modalDlBtn').onclick=()=>{window.location.href=app.url;const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);};
+  document.getElementById('modalDlBtn').onclick=()=>{
+    window.location.href=app.url;
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2500);
+  };
   renderComments(app.name);
   document.getElementById('modalOverlay').classList.add('show');
 }
@@ -265,10 +264,7 @@ function renderComments(appName){
   list.innerHTML=appComments.length?appComments.map(c=>`<div class="comment-item">${c.text}<div class="comment-time">${c.time}</div></div>`).join(''):'<div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:10px">هێشتا کۆمێنتێک نییە</div>';
 }
 
-const BOT_TOKEN='8347380580:AAFFRtUJEIDoxFLfRcBWkcELf6rQPoKrB3k';
-const CHAT_ID='1131209914';
-
-document.getElementById('commentSend').onclick=async()=>{
+document.getElementById('commentSend').onclick=()=>{
   const input=document.getElementById('commentInput');
   const text=input.value.trim();
   if(!text||!currentApp)return;
@@ -277,15 +273,6 @@ document.getElementById('commentSend').onclick=async()=>{
   comments[currentApp.name].unshift({text,time:`${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`});
   input.value='';
   renderComments(currentApp.name);
-  // Send to Telegram
-  const msg=`💬 کۆمێنتی نوێ لە یاکوزا ستۆر!\n\n🎮 ئەپ: ${currentApp.name}\n✍️ کۆمێنت: ${text}`;
-  try{
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:CHAT_ID,text:msg})
-    });
-  }catch(e){}
 };
 
 const grid=document.getElementById('appsGrid');
