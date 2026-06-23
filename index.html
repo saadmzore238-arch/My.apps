@@ -112,7 +112,6 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 </head>
 <body>
 <div class="welcome" id="welcome"></div>
-
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-header">
@@ -146,12 +145,8 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
     </div>
   </div>
 </div>
-
 <nav>
-  <div class="logo">
-    Yakuza Store 🎮
-    <span class="logo-sub">by Yakuza_Ceo</span>
-  </div>
+  <div class="logo">Yakuza Store 🎮<span class="logo-sub">by Yakuza_Ceo</span></div>
   <div class="nav-links">
     <button class="lang-btn" id="langBtn">EN</button>
     <button class="theme-btn" id="themeBtn">🌙</button>
@@ -159,7 +154,6 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
     <a class="nav-social yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ <span id="navYt"></span></a>
   </div>
 </nav>
-
 <section class="hero">
   <h1 id="heroTitle"></h1>
   <div class="hero-by">by <span>Yakuza_Ceo</span></div>
@@ -169,41 +163,33 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
     <a class="hero-social-btn yt" href="https://www.youtube.com/@YAKUZA_CEO" target="_blank">▶️ <span id="heroYt"></span></a>
   </div>
 </section>
-
 <div class="stats">
   <div class="stat"><div class="stat-num" id="totalApps">0</div><div class="stat-label" id="lblApps"></div></div>
   <div class="stat"><div class="stat-num" id="totalSize">0</div><div class="stat-label" id="lblSize"></div></div>
   <div class="stat"><div class="stat-num" id="totalCats">0</div><div class="stat-label" id="lblCats"></div></div>
   <div class="stat"><div class="stat-num" id="totalDl">0</div><div class="stat-label" id="lblDl"></div></div>
 </div>
-
 <div class="featured" id="featuredSection"></div>
-
 <div class="updates-section">
   <div class="updates-label" id="updLbl"></div>
   <div class="update-item"><div class="update-dot"></div><div class="update-text">YouTube Mod زیاد کرا 🆕</div><div class="update-date">ئەمڕۆ</div></div>
   <div class="update-item"><div class="update-dot"></div><div class="update-text">Minecraft & GTA San Andreas زیاد کران 🆕</div><div class="update-date">ئەمڕۆ</div></div>
-  <div class="update-item"><div class="update-dot"></div><div class="update-text">یاکوزا 8 بۆل پوول ئەپدەیت کرا</div><div class="update-date">دوێنێ</div></div>
+  <div class="update-item"><div class="update-dot"></div><div class="update-text">Shadow Fight & DLS 22 زیاد کران 🆕</div><div class="update-date">ئەمڕۆ</div></div>
 </div>
-
 <div class="search-wrapper">
   <div class="search-box">
     <span class="search-icon">🔍</span>
     <input class="search-input" id="searchInput"/>
   </div>
 </div>
-
 <div class="cats" id="catsBar"></div>
-
 <section class="apps-section">
   <div class="section-label" id="sectionLabel"></div>
   <div class="apps-grid" id="appsGrid"></div>
   <div class="no-results" id="noResults"></div>
 </section>
-
 <button class="scroll-top" id="scrollTop">↑</button>
 <div class="toast" id="toast"></div>
-
 <footer>
   <div class="footer-socials">
     <a class="footer-social tg" href="https://t.me/YAKUZA_CEO3" target="_blank">✈️ تەلەگرام</a>
@@ -212,22 +198,21 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   Yakuza Store 🎮 · ئەپی مۆدکراو
   <div class="footer-owner">© Yakuza_Ceo</div>
 </footer>
-
 <script>
 const apps=[
-  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس"],cat:"ڤیدیۆ",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/200px-Netflix_2015_logo.svg.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa",downloads:1240,isNew:false},
-  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","pool","بۆل","پوول"],cat:"یاری",img:"https://play-lh.googleusercontent.com/aKDGSHOFiuKOKz8GWo55mBDcVTkHiD0R3PeVzY_tnTd6wr7iuGMEqSbXkJWqumHGIiY=w240-h480",version:"1.0",size:99.8,url:"https://drive.google.com/uc?export=download&id=1VQk3aZxIEoATF4auqCPy9AcNDEWSKTB_",downloads:3820,isNew:false},
-  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","videostar"],cat:"ڤیدیۆ",img:"https://play-lh.googleusercontent.com/1GipDd1JFWTP5m-RrmSovvjpBMeJNS5w1mV2Gkh5b2BmpRxNbKD1h0V0dVPcPHGcjM=w240-h480",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R",downloads:980,isNew:false},
-  {name:"PicsArt",keywords:["picsart","پیکسارت"],cat:"دیزاین",img:"https://play-lh.googleusercontent.com/v-9JyGuEpMeoPCCHB2N1mzXONW4v9-ZQXNO3eiWFpiUz1RzwkUH8GPTQgHEFIiZ4IQ=w240-h480",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1oFRYJ5KaFG4JO_nMIG1P7vZ9dMcTiRZa",downloads:2100,isNew:false},
-  {name:"Candy Crush",keywords:["candy","crush","کەندی"],cat:"یاری",img:"https://play-lh.googleusercontent.com/fS7xl6ENiF8aGl4ll_APVC3FaOlSM6DXHlIHI2cGFqBfHiiBfJcZdqSqSBiSMsaOxg=w240-h480",version:"1.0",size:120,url:"https://drive.google.com/uc?export=download&id=1Rt4efDEmLhYQVng7jQdI_YGJTpOTiA8p",downloads:1560,isNew:false},
-  {name:"Block Blast",keywords:["block","blast","بلۆک"],cat:"یاری",img:"https://play-lh.googleusercontent.com/8N3tnKUkrYRiCWyQT2lmzc_AMkDjJENrulKaK7b0_QiSs1y3SQVIMfVxpGW74UEjw3o=w240-h480",version:"1.0",size:100,url:"https://drive.google.com/uc?export=download&id=1Du972Tg8TrMlYvh3XgWRV_Ea_wzvloD8",downloads:890,isNew:false},
-  {name:"Roblox",keywords:["roblox","رۆبلۆکس"],cat:"یاری",img:"https://play-lh.googleusercontent.com/WRRZCMg2llXpg-c9o_t_4eGW7gExB9dmZRjb03l8ZeSJaLp-b6mlDVxWZLO-5gpH6w=w240-h480",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1g6AHWTVj6q1ZwoRQVlG6vsfACNMsPA5I",downloads:4500,isNew:false},
-  {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی"],cat:"یاری",img:"https://play-lh.googleusercontent.com/MVoAnVMLXJHtc9nBVcbcMpq0JxXbxGbCiUNlAP-5BFKOY5GRDAOJ-lQmLLLJblAS3Th=w240-h480",version:"1.0",size:180,url:"https://drive.google.com/uc?export=download&id=1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI",downloads:3200,isNew:false},
-  {name:"YouTube Mod",keywords:["youtube","یوتیوب"],cat:"ڤیدیۆ",img:"https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-O3cnqK3BUfny5ylOrALhnC1mw=w240-h480",version:"1.0",size:95,url:"https://drive.google.com/uc?export=download&id=1cUIwp2cG4Rv9gY-1I2JPc9kqWVEsSKTc",downloads:100,isNew:true},
-  {name:"Shadow Fight",keywords:["shadow","fight","شادۆ"],cat:"یاری",img:"https://play-lh.googleusercontent.com/HrK-jYGXFo_FsmMFqCQY5V1FGlA2y7X9MlbFt1QC-WkB_h7DRJG4_0bBkEOLpMfq7c=w240-h480",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1r_l7OTlDrwys9O1iO64wd3BZaLOdPDxC",downloads:100,isNew:true},
-  {name:"Minecraft",keywords:["minecraft","ماینکرافت"],cat:"یاری",img:"https://play-lh.googleusercontent.com/VSwHQjcAttxsLE4YFQkAMvBkOMxC_R3yUHxZxJKE86H9m1WxGVnfwKBWRqpfJEBs3nY=w240-h480",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1HXyYnAHvUH-FWAJHscSt82X5Bxxo3aN3",downloads:100,isNew:true},
-  {name:"DLS 22",keywords:["dls","dls22","فوتبۆل"],cat:"یاری",img:"https://play-lh.googleusercontent.com/Oj9A9YNFV68k0l2mj4fFZbRgEXvqUBFVBs6T-L1A8dPWoZJSQW7p5g9U5YRpFQerMA=w240-h480",version:"1.0",size:300,url:"https://drive.google.com/uc?export=download&id=1lRyxIo2B7WWXjjT23rJftqr68MfZXT4Y",downloads:100,isNew:true},
-  {name:"GTA San Andreas",keywords:["gta","san andreas","گتا"],cat:"یاری",img:"https://play-lh.googleusercontent.com/Oi4fSDX4mI8oHlqT78oy5QQmJJDFBFD3aXBLkBxV7oU2hQKaFLfJlQ1r8K3ZeR4XLSM=w240-h480",version:"1.0",size:500,url:"https://drive.google.com/uc?export=download&id=1Wim46yc3_CSbVbOy9bSYeLY20DH0NiL7",downloads:100,isNew:true}
+  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa",downloads:1240,isNew:false},
+  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","pool","بۆل","پوول"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,url:"https://drive.google.com/uc?export=download&id=1VQk3aZxIEoATF4auqCPy9AcNDEWSKTB_",downloads:3820,isNew:false},
+  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R",downloads:980,isNew:false},
+  {name:"PicsArt",keywords:["picsart","پیکسارت"],cat:"دیزاین",img:"https://i.imgur.com/V7Owt6c.png",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1oFRYJ5KaFG4JO_nMIG1P7vZ9dMcTiRZa",downloads:2100,isNew:false},
+  {name:"Candy Crush",keywords:["candy","crush","کەندی"],cat:"یاری",img:"https://i.imgur.com/DcYKeLN.png",version:"1.0",size:120,url:"https://drive.google.com/uc?export=download&id=1Rt4efDEmLhYQVng7jQdI_YGJTpOTiA8p",downloads:1560,isNew:false},
+  {name:"Block Blast",keywords:["block","blast","بلۆک"],cat:"یاری",img:"https://i.imgur.com/lYfZbkL.png",version:"1.0",size:100,url:"https://drive.google.com/uc?export=download&id=1Du972Tg8TrMlYvh3XgWRV_Ea_wzvloD8",downloads:890,isNew:false},
+  {name:"Roblox",keywords:["roblox","رۆبلۆکس"],cat:"یاری",img:"https://i.imgur.com/PXbkmMV.jpeg",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1g6AHWTVj6q1ZwoRQVlG6vsfACNMsPA5I",downloads:4500,isNew:false},
+  {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی"],cat:"یاری",img:"https://i.imgur.com/CuCI9Mw.jpeg",version:"1.0",size:180,url:"https://drive.google.com/uc?export=download&id=1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI",downloads:3200,isNew:false},
+  {name:"YouTube Mod 🆕",keywords:["youtube","یوتیوب"],cat:"ڤیدیۆ",img:"https://i.imgur.com/rGDH6oU.png",version:"1.0",size:95,url:"https://drive.google.com/uc?export=download&id=1cUIwp2cG4Rv9gY-1I2JPc9kqWVEsSKTc",downloads:100,isNew:true},
+  {name:"Shadow Fight 🆕",keywords:["shadow","fight","شادۆ"],cat:"یاری",img:"https://i.imgur.com/Q5dGs5l.png",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1r_l7OTlDrwys9O1iO64wd3BZaLOdPDxC",downloads:100,isNew:true},
+  {name:"Minecraft 🆕",keywords:["minecraft","ماینکرافت"],cat:"یاری",img:"https://i.imgur.com/6KMxhLU.png",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1HXyYnAHvUH-FWAJHscSt82X5Bxxo3aN3",downloads:100,isNew:true},
+  {name:"DLS 22 🆕",keywords:["dls","فوتبۆل"],cat:"یاری",img:"https://i.imgur.com/9p7OHMC.png",version:"1.0",size:300,url:"https://drive.google.com/uc?export=download&id=1lRyxIo2B7WWXjjT23rJftqr68MfZXT4Y",downloads:100,isNew:true},
+  {name:"GTA San Andreas 🆕",keywords:["gta","san andreas","گتا"],cat:"یاری",img:"https://i.imgur.com/HMcSAaG.png",version:"1.0",size:500,url:"https://drive.google.com/uc?export=download&id=1Wim46yc3_CSbVbOy9bSYeLY20DH0NiL7",downloads:100,isNew:true}
 ];
 
 const T={
