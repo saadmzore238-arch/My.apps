@@ -34,10 +34,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-social-btn.tg{border-color:rgba(41,182,246,0.3);color:#29b6f6}
 .hero-social-btn.yt{border-color:rgba(255,70,70,0.3);color:#ff4646}
 .stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;padding:0 20px 40px}
-.stat{text-align:center;cursor:default}
+.stat{text-align:center}
 .stat-num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .stat-label{font-size:0.72rem;color:var(--muted);margin-top:2px}
-/* Featured */
 .featured{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .featured-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .featured-card{background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(167,139,250,0.1));border:1px solid rgba(108,99,255,0.3);border-radius:20px;padding:20px;display:flex;align-items:center;gap:16px;color:inherit;direction:rtl;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s}
@@ -47,7 +46,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .featured-name{font-size:1.1rem;font-weight:900;margin-bottom:4px}
 .featured-meta{font-size:0.75rem;color:var(--muted)}
 .featured-dl{padding:8px 18px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;font-size:0.82rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0}
-/* Top Rated */
 .toprated-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .toprated-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .toprated-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
@@ -57,23 +55,19 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .toprated-img{width:40px;height:40px;border-radius:10px;object-fit:cover}
 .toprated-name{font-size:0.78rem;font-weight:700}
 .toprated-stars{font-size:0.68rem;color:#FFD700}
-/* Vote section */
 .vote-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .vote-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .vote-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px}
-.vote-img{width:52px;height:52px;border-radius:14px;object-fit:cover}
 .vote-name{font-size:0.9rem;font-weight:700;flex:1}
 .vote-btns{display:flex;gap:8px}
 .vote-btn{padding:8px 16px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:0.8rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
 .vote-btn:hover,.vote-btn.voted{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
-/* Updates */
 .updates-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .updates-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .update-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;direction:rtl}
 .update-dot{width:8px;height:8px;border-radius:99px;background:var(--accent2);flex-shrink:0}
 .update-text{font-size:0.8rem;color:var(--text)}
 .update-date{font-size:0.7rem;color:var(--muted);margin-right:auto}
-/* FAQ */
 .faq-section{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .faq-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:10px}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:8px;overflow:hidden}
@@ -82,7 +76,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .faq-a{font-size:0.8rem;color:var(--muted);padding:0 16px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
 .faq-item.open .faq-a{max-height:200px;padding:0 16px 14px}
 .faq-item.open .faq-q span{transform:rotate(180deg)}
-/* Search */
 .search-wrapper{max-width:720px;margin:0 auto;padding:0 20px 24px}
 .search-box{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 18px;transition:border-color .2s}
 .search-box:focus-within{border-color:rgba(108,99,255,0.5)}
@@ -95,7 +88,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .apps-section{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .section-label{font-size:0.7rem;font-weight:700;color:var(--muted);margin-bottom:16px}
 .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-/* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
 .modal-overlay.show{display:flex}
 .modal{background:var(--card);border-radius:24px 24px 0 0;padding:28px 24px 40px;width:100%;max-width:500px;direction:rtl;max-height:88vh;overflow-y:auto}
@@ -104,7 +96,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .modal-name{font-size:1.3rem;font-weight:900}
 .modal-meta{font-size:0.8rem;color:var(--muted);margin-top:4px}
 .modal-close{margin-right:auto;width:32px;height:32px;border-radius:99px;background:var(--border);border:none;color:var(--text);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.modal-dl-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:14px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px;transition:opacity .2s}
+.modal-dl-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:14px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}
 .progress-wrap{width:100%;background:rgba(255,255,255,0.06);border-radius:99px;height:6px;margin-top:10px;display:none}
 .progress-bar{height:6px;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));width:0%;transition:width .3s}
 .share-btn{width:100%;padding:12px;background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);border-radius:14px;color:var(--accent2);font-size:0.9rem;font-weight:700;cursor:pointer;margin-top:8px;font-family:'Inter',sans-serif}
@@ -152,10 +144,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   <div class="modal">
     <div class="modal-header">
       <img class="modal-img" id="modalImg" src=""/>
-      <div>
-        <div class="modal-name" id="modalName"></div>
-        <div class="modal-meta" id="modalMeta"></div>
-      </div>
+      <div><div class="modal-name" id="modalName"></div><div class="modal-meta" id="modalMeta"></div></div>
       <button class="modal-close" id="modalClose">✕</button>
     </div>
     <button class="modal-dl-btn" id="modalDlBtn"></button>
@@ -164,10 +153,8 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
     <div class="rating-section">
       <div class="rating-title" id="ratingTitle"></div>
       <div class="stars-row">
-        <span class="star" data-v="5">★</span>
-        <span class="star" data-v="4">★</span>
-        <span class="star" data-v="3">★</span>
-        <span class="star" data-v="2">★</span>
+        <span class="star" data-v="5">★</span><span class="star" data-v="4">★</span>
+        <span class="star" data-v="3">★</span><span class="star" data-v="2">★</span>
         <span class="star" data-v="1">★</span>
       </div>
       <div class="rating-avg" id="ratingAvg"></div>
@@ -217,10 +204,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
 </div>
 <div class="faq-section" id="faqSection"></div>
 <div class="search-wrapper">
-  <div class="search-box">
-    <span class="search-icon">🔍</span>
-    <input class="search-input" id="searchInput"/>
-  </div>
+  <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="searchInput"/></div>
 </div>
 <div class="cats" id="catsBar"></div>
 <section class="apps-section">
@@ -239,25 +223,27 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);fo
   <div class="footer-owner">© Yakuza_Ceo</div>
 </footer>
 <script>
+function gdrive(id){return `https://drive.google.com/uc?export=download&id=${id}`;}
+
 const apps=[
-  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38.45,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa",downloads:1240,isNew:false},
-  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","pool","بۆل","پوول"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99.8,url:"https://drive.google.com/uc?export=download&id=1VQk3aZxIEoATF4auqCPy9AcNDEWSKTB_",downloads:3820,isNew:false},
-  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:"https://drive.google.com/uc?export=download&id=1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R",downloads:980,isNew:false},
-  {name:"PicsArt",keywords:["picsart","پیکسارت"],cat:"دیزاین",img:"https://i.imgur.com/V7Owt6c.png",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1oFRYJ5KaFG4JO_nMIG1P7vZ9dMcTiRZa",downloads:2100,isNew:false},
-  {name:"Candy Crush",keywords:["candy","crush","کەندی"],cat:"یاری",img:"https://i.imgur.com/DcYKeLN.png",version:"1.0",size:120,url:"https://drive.google.com/uc?export=download&id=1Rt4efDEmLhYQVng7jQdI_YGJTpOTiA8p",downloads:1560,isNew:false},
-  {name:"Block Blast",keywords:["block","blast","بلۆک"],cat:"یاری",img:"https://i.imgur.com/lYfZbkL.png",version:"1.0",size:100,url:"https://drive.google.com/uc?export=download&id=1Du972Tg8TrMlYvh3XgWRV_Ea_wzvloD8",downloads:890,isNew:false},
-  {name:"Roblox",keywords:["roblox","رۆبلۆکس"],cat:"یاری",img:"https://i.imgur.com/PXbkmMV.jpeg",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1g6AHWTVj6q1ZwoRQVlG6vsfACNMsPA5I",downloads:4500,isNew:false},
-  {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی"],cat:"یاری",img:"https://i.imgur.com/CuCI9Mw.jpeg",version:"1.0",size:180,url:"https://drive.google.com/uc?export=download&id=1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI",downloads:3200,isNew:false},
-  {name:"YouTube Mod",keywords:["youtube","یوتیوب"],cat:"ڤیدیۆ",img:"https://i.imgur.com/g36Yb8R.jpeg",version:"1.0",size:95,url:"https://drive.google.com/uc?export=download&id=1cUIwp2cG4Rv9gY-1I2JPc9kqWVEsSKTc",downloads:100,isNew:false},
-  {name:"Shadow Fight",keywords:["shadow","fight","شادۆ"],cat:"یاری",img:"https://i.imgur.com/8FnQ5Bw.jpeg",version:"1.0",size:150,url:"https://drive.google.com/uc?export=download&id=1r_l7OTlDrwys9O1iO64wd3BZaLOdPDxC",downloads:100,isNew:false},
-  {name:"Minecraft",keywords:["minecraft","ماینکرافت"],cat:"یاری",img:"https://i.imgur.com/AbF40en.jpeg",version:"1.0",size:200,url:"https://drive.google.com/uc?export=download&id=1HXyYnAHvUH-FWAJHscSt82X5Bxxo3aN3",downloads:100,isNew:false},
-  {name:"DLS 22",keywords:["dls","فوتبۆل"],cat:"یاری",img:"https://i.imgur.com/9NLxeYN.jpeg",version:"1.0",size:300,url:"https://drive.google.com/uc?export=download&id=1lRyxIo2B7WWXjjT23rJftqr68MfZXT4Y",downloads:100,isNew:false},
-  {name:"GTA San Andreas",keywords:["gta","san andreas","گتا"],cat:"یاری",img:"https://i.imgur.com/CGO12bo.jpeg",version:"1.0",size:500,url:"https://drive.google.com/uc?export=download&id=1Wim46yc3_CSbVbOy9bSYeLY20DH0NiL7",downloads:100,isNew:false},
-  {name:"Spotify Mod 🆕",keywords:["spotify","سپۆتیفای","موزیک"],cat:"موزیک",img:"https://play-lh.googleusercontent.com/UrGmbv0K_RRQjpDXWYRDpnFqhMNEWuNJ9ohJQwSJm-YlJK3A1MGKD_v5uDRVDGVKQ=w240-h480",version:"1.0",size:80,url:"https://drive.google.com/uc?export=download&id=1ql-pYoi_AkFEcrtyjNy-dTRNYnjVcYe7",downloads:50,isNew:true},
-  {name:"Instagram Mod 🆕",keywords:["instagram","ئینستاگرام","insta"],cat:"سۆشیال",img:"https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-a5Z0YGYD6d6_gfLdE6TdJeRO2hFw=w240-h480",version:"1.0",size:70,url:"https://drive.google.com/uc?export=download&id=1KnSmeeE7jZ8W9e46mxPNeLQmci3qcb3j",downloads:50,isNew:true},
-  {name:"Among Us 🆕",keywords:["among us","ئامۆنگ"],cat:"یاری",img:"https://play-lh.googleusercontent.com/qToWh8-LBSPCn-aLRt78qnrpPNVPbVTtJf5iqMbXRYjolhYjRMOl2c0jFEEUB7Tk_Q=w240-h480",version:"1.0",size:120,url:"https://drive.google.com/uc?export=download&id=1MMcZHCyKq0FTpZ_rP3kkhjky99Tg3utM",downloads:50,isNew:true},
-  {name:"Little Nightmares 🆕",keywords:["little nightmares","لیتڵ"],cat:"یاری",img:"https://play-lh.googleusercontent.com/tNENfhXj6R5sRjB1tBH_WQfEP0BEeK_A7jY5zHvKNgVExvDnAniuYDhq2Pd6-Wid6A=w240-h480",version:"1.0",size:2000,url:"https://drive.google.com/uc?export=download&id=1b-bUEY8B30vOcdbvwvOO8PJ-leQNGba0",downloads:50,isNew:true},
-  {name:"Brawl Stars 🆕",keywords:["brawl","stars","برۆل"],cat:"یاری",img:"https://play-lh.googleusercontent.com/VNLHx7FLMGlsRCGIGGjNgTLjuNMGRVFcVmWgHW5r-jG5U_7P5VW0VxOh_Ri6mZN0cg=w240-h480",version:"1.0",size:350,url:"https://drive.google.com/uc?export=download&id=1DJp8QAkpuA74AeZcLihfM-KAp5M2veMg",downloads:50,isNew:true}
+  {name:"یاکوزا نێتفلیکس",keywords:["netflix","نێتفلیکس"],cat:"ڤیدیۆ",img:"https://i.imgur.com/7RfYVsb.png",version:"1.0",size:38,url:"https://github.com/saadmzore238-arch/My.apps/releases/download/v1.0/Netflix-IPAOMTK.COM.ipa",downloads:1240,isNew:false},
+  {name:"یاکوزا 8 بۆل پوول",keywords:["8ball","pool","بۆل","پوول"],cat:"یاری",img:"https://i.imgur.com/vVz5h64.png",version:"1.0",size:99,url:gdrive("1VQk3aZxIEoATF4auqCPy9AcNDEWSKTB_"),downloads:3820,isNew:false},
+  {name:"یاکوزا ڤیدیۆ ستار",keywords:["video","ڤیدیۆ","videostar"],cat:"ڤیدیۆ",img:"https://i.imgur.com/QXaLmlJ.png",version:"1.0",size:400,url:gdrive("1tjZ8Aeh17WFKJfEMnV0Qt1u39JgEpe7R"),downloads:980,isNew:false},
+  {name:"PicsArt",keywords:["picsart","پیکسارت"],cat:"دیزاین",img:"https://i.imgur.com/V7Owt6c.png",version:"1.0",size:150,url:gdrive("1oFRYJ5KaFG4JO_nMIG1P7vZ9dMcTiRZa"),downloads:2100,isNew:false},
+  {name:"Candy Crush",keywords:["candy","crush","کەندی"],cat:"یاری",img:"https://i.imgur.com/DcYKeLN.png",version:"1.0",size:120,url:gdrive("1Rt4efDEmLhYQVng7jQdI_YGJTpOTiA8p"),downloads:1560,isNew:false},
+  {name:"Block Blast",keywords:["block","blast","بلۆک"],cat:"یاری",img:"https://i.imgur.com/lYfZbkL.png",version:"1.0",size:100,url:gdrive("1Du972Tg8TrMlYvh3XgWRV_Ea_wzvloD8"),downloads:890,isNew:false},
+  {name:"Roblox",keywords:["roblox","رۆبلۆکس"],cat:"یاری",img:"https://i.imgur.com/PXbkmMV.jpeg",version:"1.0",size:200,url:gdrive("1g6AHWTVj6q1ZwoRQVlG6vsfACNMsPA5I"),downloads:4500,isNew:false},
+  {name:"Subway Surfers",keywords:["subway","surfers","سوبوەی"],cat:"یاری",img:"https://i.imgur.com/CuCI9Mw.jpeg",version:"1.0",size:180,url:gdrive("1fr22p1Sjlq3zbpup2RSF35i5Eg2TyBsI"),downloads:3200,isNew:false},
+  {name:"YouTube Mod",keywords:["youtube","یوتیوب"],cat:"ڤیدیۆ",img:"https://i.imgur.com/g36Yb8R.jpeg",version:"1.0",size:95,url:gdrive("1cUIwp2cG4Rv9gY-1I2JPc9kqWVEsSKTc"),downloads:500,isNew:false},
+  {name:"Shadow Fight",keywords:["shadow","fight","شادۆ"],cat:"یاری",img:"https://i.imgur.com/8FnQ5Bw.jpeg",version:"1.0",size:150,url:gdrive("1r_l7OTlDrwys9O1iO64wd3BZaLOdPDxC"),downloads:300,isNew:false},
+  {name:"Minecraft",keywords:["minecraft","ماینکرافت"],cat:"یاری",img:"https://i.imgur.com/AbF40en.jpeg",version:"1.0",size:200,url:gdrive("1HXyYnAHvUH-FWAJHscSt82X5Bxxo3aN3"),downloads:600,isNew:false},
+  {name:"DLS 22",keywords:["dls","فوتبۆل"],cat:"یاری",img:"https://i.imgur.com/9NLxeYN.jpeg",version:"1.0",size:300,url:gdrive("1lRyxIo2B7WWXjjT23rJftqr68MfZXT4Y"),downloads:400,isNew:false},
+  {name:"GTA San Andreas",keywords:["gta","san andreas","گتا"],cat:"یاری",img:"https://i.imgur.com/CGO12bo.jpeg",version:"1.0",size:500,url:gdrive("1Wim46yc3_CSbVbOy9bSYeLY20DH0NiL7"),downloads:700,isNew:false},
+  {name:"Spotify Mod 🆕",keywords:["spotify","سپۆتیفای","موزیک"],cat:"موزیک",img:"https://play-lh.googleusercontent.com/UrGmbv0K_RRQjpDXWYRDpnFqhMNEWuNJ9ohJQwSJm-YlJK3A1MGKD_v5uDRVDGVKQ=w240-h480",version:"1.0",size:80,url:gdrive("1ql-pYoi_AkFEcrtyjNy-dTRNYnjVcYe7"),downloads:50,isNew:true},
+  {name:"Instagram Mod 🆕",keywords:["instagram","ئینستاگرام","insta"],cat:"سۆشیال",img:"https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-a5Z0YGYD6d6_gfLdE6TdJeRO2hFw=w240-h480",version:"1.0",size:70,url:gdrive("1KnSmeeE7jZ8W9e46mxPNeLQmci3qcb3j"),downloads:50,isNew:true},
+  {name:"Among Us 🆕",keywords:["among us","ئامۆنگ"],cat:"یاری",img:"https://play-lh.googleusercontent.com/qToWh8-LBSPCn-aLRt78qnrpPNVPbVTtJf5iqMbXRYjolhYjRMOl2c0jFEEUB7Tk_Q=w240-h480",version:"1.0",size:120,url:gdrive("1MMcZHCyKq0FTpZ_rP3kkhjky99Tg3utM"),downloads:50,isNew:true},
+  {name:"Little Nightmares 🆕",keywords:["little nightmares","لیتڵ"],cat:"یاری",img:"https://play-lh.googleusercontent.com/tNENfhXj6R5sRjB1tBH_WQfEP0BEeK_A7jY5zHvKNgVExvDnAniuYDhq2Pd6-Wid6A=w240-h480",version:"1.0",size:2000,url:gdrive("1b-bUEY8B30vOcdbvwvOO8PJ-leQNGba0"),downloads:50,isNew:true},
+  {name:"Brawl Stars 🆕",keywords:["brawl","stars","برۆل"],cat:"یاری",img:"https://play-lh.googleusercontent.com/VNLHx7FLMGlsRCGIGGjNgTLjuNMGRVFcVmWgHW5r-jG5U_7P5VW0VxOh_Ri6mZN0cg=w240-h480",version:"1.0",size:350,url:gdrive("1DJp8QAkpuA74AeZcLihfM-KAp5M2veMg"),downloads:50,isNew:true}
 ];
 
 const T={
@@ -275,15 +261,19 @@ const faqs={
   en:[
     {q:'How to download?',a:'Click on the app, then press the download button. The file will download to your device.'},
     {q:'Are the apps free?',a:'Yes! All apps are free and modded.'},
-    {q:'Are the apps safe?',a:'Apps are tested and safe. However, modded apps are not available on official app stores.'},
+    {q:'Are the apps safe?',a:'Apps are tested and safe. However modded apps are not on official app stores.'},
     {q:'How to install IPA on iPhone?',a:'You need AltStore or Sideloadly to install IPA files on iPhone.'}
   ]
 };
 
-let lang='ku',ratings={},comments={},currentApp=null,activeCat='ALL',activeSearch='',votes={};
+let lang='ku',ratings={},comments={},currentApp=null,activeCat='ALL',activeSearch='',votes={},voteIdx=0;
 const cats=[...new Set(apps.map(a=>a.cat))];
+const voteApps=['Free Fire','PUBG Mobile','Clash of Clans','TikTok Mod','Snapchat Mod'];
+
 function t(k){return T[lang][k]||'';}
 function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
+function getAvg(name){const r=ratings[name];if(!r||!r.votes)return null;return(r.total/r.votes).toFixed(1);}
+function starsHtml(avg,size='1rem'){let s='';for(let i=1;i<=5;i++)s+=`<span style="color:${i<=Math.round(avg)?'#FFD700':'#555'};font-size:${size}">★</span>`;return s;}
 
 function applyLang(){
   document.documentElement.dir=t('dir');
@@ -315,9 +305,6 @@ document.getElementById('totalDl').textContent=(apps.reduce((s,a)=>s+a.downloads
 
 setTimeout(()=>{const w=document.getElementById('welcome');w.classList.add('show');setTimeout(()=>w.classList.remove('show'),3500);},500);
 
-function getAvg(name){const r=ratings[name];if(!r||!r.votes)return null;return(r.total/r.votes).toFixed(1);}
-function starsHtml(avg,size='1rem'){let s='';for(let i=1;i<=5;i++)s+=`<span style="color:${i<=Math.round(avg)?'#FFD700':'#555'};font-size:${size}">★</span>`;return s;}
-
 function buildFeatured(){
   const f=apps.reduce((a,b)=>a.downloads>b.downloads?a:b);
   document.getElementById('featuredSection').innerHTML=`<div class="featured-label">${t('featLabel')}</div><div class="featured-card" onclick="openModal(apps[${apps.indexOf(f)}])"><div class="featured-badge">${t('featBadge')}</div><img class="featured-img" src="${f.img}" onerror="this.src='https://i.imgur.com/sPkiZ9V.png'"/><div style="flex:1"><div class="featured-name">${f.name}</div><div class="featured-meta">v${f.version} · ${f.size} MB</div><div class="dl-count">⬇️ ${f.downloads.toLocaleString()}</div></div><div class="featured-dl">${t('dl')}</div></div>`;
@@ -327,29 +314,21 @@ function buildTopRated(){
   const rated=apps.filter(a=>getAvg(a.name)).sort((a,b)=>parseFloat(getAvg(b.name))-parseFloat(getAvg(a.name))).slice(0,5);
   if(!rated.length){document.getElementById('topratedSection').innerHTML='';return;}
   let html=`<div class="toprated-label">${t('topratedLabel')}</div><div class="toprated-list">`;
-  rated.forEach((app,i)=>{
-    const avg=getAvg(app.name);
-    html+=`<div class="toprated-item" onclick="openModal(apps[${apps.indexOf(app)}])"><img class="toprated-img" src="${app.img}" onerror="this.src='https://i.imgur.com/sPkiZ9V.png'"/><div><div class="toprated-name">#${i+1} ${app.name}</div><div class="toprated-stars">${starsHtml(avg,'0.75rem')} ${avg}</div></div></div>`;
-  });
-  html+='</div>';
-  document.getElementById('topratedSection').innerHTML=html;
+  rated.forEach((app,i)=>{const avg=getAvg(app.name);html+=`<div class="toprated-item" onclick="openModal(apps[${apps.indexOf(app)}])"><img class="toprated-img" src="${app.img}" onerror="this.src='https://i.imgur.com/sPkiZ9V.png'"/><div><div class="toprated-name">#${i+1} ${app.name}</div><div class="toprated-stars">${starsHtml(avg,'0.75rem')} ${avg}</div></div></div>`;});
+  document.getElementById('topratedSection').innerHTML=html+'</div>';
 }
 
-const voteApps=['Free Fire','PUBG Mobile','Clash of Clans','TikTok Mod','Snapchat Mod'];
-let voteIdx=0;
 function buildVote(){
   const name=voteApps[voteIdx%voteApps.length];
   const v=votes[name]||0;
-  document.getElementById('voteSection').innerHTML=`<div class="vote-label">${t('voteLabel')}</div><div class="vote-card"><div class="vote-name">➕ ${name}</div><div class="vote-btns"><button class="vote-btn${v?` voted`:''}" onclick="doVote('${name}')">👍 ${v||0}</button><button class="vote-btn" onclick="voteIdx++;buildVote()">⏭️</button></div></div>`;
+  document.getElementById('voteSection').innerHTML=`<div class="vote-label">${t('voteLabel')}</div><div class="vote-card"><div class="vote-name">➕ ${name}</div><div class="vote-btns"><button class="vote-btn${v?' voted':''}" onclick="doVote('${name}')">👍 ${v}</button><button class="vote-btn" onclick="voteIdx++;buildVote()">⏭️</button></div></div>`;
 }
 function doVote(name){votes[name]=(votes[name]||0)+1;buildVote();showToast(t('toastVote'));}
 
 function buildFAQ(){
   const items=faqs[lang];
   let html=`<div class="faq-label">${t('faqLabel')}</div>`;
-  items.forEach((item,i)=>{
-    html+=`<div class="faq-item" id="faq${i}"><div class="faq-q" onclick="toggleFaq(${i})">${item.q}<span>▼</span></div><div class="faq-a">${item.a}</div></div>`;
-  });
+  items.forEach((item,i)=>{html+=`<div class="faq-item" id="faq${i}"><div class="faq-q" onclick="toggleFaq(${i})">${item.q}<span>▼</span></div><div class="faq-a">${item.a}</div></div>`;});
   document.getElementById('faqSection').innerHTML=html;
 }
 function toggleFaq(i){document.getElementById('faq'+i).classList.toggle('open');}
